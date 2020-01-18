@@ -1,4 +1,4 @@
-module github.com/hi1280/update-image
+module github.com/hi1280/kube-patch-fake
 
 go 1.13
 

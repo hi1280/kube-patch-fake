@@ -24,7 +24,7 @@ var namespace string
 var kubeconfig *rest.Config
 
 var rootCmd = &cobra.Command{
-	Use:   "kube-patch-fake",
+	Use:   "kube-patch-fake [NAME]",
 	Short: "Change to the deployment with fake value patch",
 	Long:  "Change to the deployment with fake value patch",
 	Args:  cobra.MinimumNArgs(1),
@@ -58,11 +58,7 @@ func Execute() {
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
 	rootCmd.PersistentFlags().StringVarP(&namespace, "namespace", "n", "default", "namespace")
-}
-
-func initConfig() {
 	var configString string
 	if home, _ := homedir.Dir(); home != "" {
 		rootCmd.PersistentFlags().StringVar(&configString, "kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
